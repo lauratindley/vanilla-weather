@@ -1,6 +1,5 @@
 function formatTime(timestamp) {
   let date = new Date(timestamp);
-  console.log(date);
   let days = [
     "Sunday",
     "Monday",
@@ -23,8 +22,6 @@ function formatTime(timestamp) {
 }
 
 function displayWeather(response) {
-  console.log(response);
-
   document.querySelector("h1").innerHTML = response.data.city;
 
   celsiusTemp = Math.round(response.data.temperature.current);
