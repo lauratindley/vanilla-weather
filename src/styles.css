@@ -26,10 +26,17 @@ h1 {
 }
 
 ul {
+  padding-left: 0px;
+}
+
+li {
   list-style: none;
   color: #70757a;
   padding-left: 0px;
   font-size: 14px;
+}
+
+li:first-letter {
   text-transform: capitalize;
 }
 

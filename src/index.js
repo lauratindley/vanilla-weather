@@ -39,6 +39,12 @@ function displayWeather(response) {
   document.querySelector("#current-time").innerHTML = formatTime(
     response.data.daily[0].time * 1000
   );
+  document
+    .querySelector("#current-icon")
+    .setAttribute("src", response.data.daily[0].condition.icon_url);
+  document
+    .querySelector("#current-icon")
+    .setAttribute("alt", response.data.daily[0].condition.description);
 }
 
 let initialCity = "London";
