@@ -27,6 +27,9 @@ function displayWeather(response) {
 
   celsiusTemp = Math.round(response.data.daily[0].temperature.day);
   document.querySelector("#current-temperature").innerHTML = celsiusTemp;
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+
   document.querySelector("#current-humidity").innerHTML = Math.round(
     response.data.daily[0].temperature.humidity
   );
@@ -60,12 +63,16 @@ function handleSubmit(event) {
 
 function displayFahrenheitTemp(event) {
   event.preventDefault();
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
   let fahrenheitTemp = Math.round(celsiusTemp * (9 / 5) + 32);
   document.querySelector("#current-temperature").innerHTML = fahrenheitTemp;
 }
 
 function displayCelsiusTemp(event) {
   event.preventDefault();
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
   document.querySelector("#current-temperature").innerHTML = celsiusTemp;
 }
 
