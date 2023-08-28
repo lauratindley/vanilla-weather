@@ -30,6 +30,7 @@ ul {
   color: #70757a;
   padding-left: 0px;
   font-size: 14px;
+  text-transform: capitalize;
 }
 
 .weather-temperature img {
