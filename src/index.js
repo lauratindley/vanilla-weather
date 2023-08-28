@@ -23,35 +23,37 @@ function formatTime(timestamp) {
 }
 
 function displayWeather(response) {
+  console.log(response);
+
   document.querySelector("h1").innerHTML = response.data.city;
 
-  celsiusTemp = Math.round(response.data.daily[0].temperature.day);
+  celsiusTemp = Math.round(response.data.temperature.current);
   document.querySelector("#current-temperature").innerHTML = celsiusTemp;
   fahrenheitLink.classList.remove("active");
   celsiusLink.classList.add("active");
 
   document.querySelector("#current-humidity").innerHTML = Math.round(
-    response.data.daily[0].temperature.humidity
+    response.data.temperature.humidity
   );
   document.querySelector("#current-wind").innerHTML = Math.round(
-    response.data.daily[0].wind.speed
+    response.data.wind.speed
   );
   document.querySelector("#current-weather-description").innerHTML =
-    response.data.daily[0].condition.description;
+    response.data.condition.description;
   document.querySelector("#current-time").innerHTML = formatTime(
-    response.data.daily[0].time * 1000
+    response.data.time * 1000
   );
   document
     .querySelector("#current-icon")
-    .setAttribute("src", response.data.daily[0].condition.icon_url);
+    .setAttribute("src", response.data.condition.icon_url);
   document
     .querySelector("#current-icon")
-    .setAttribute("alt", response.data.daily[0].condition.description);
+    .setAttribute("alt", response.data.condition.description);
 }
 
 function search(city) {
   let apiKey = "oab4e60e1041e5f64354360t2dfe8d11";
-  let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiURL).then(displayWeather);
 }
 
