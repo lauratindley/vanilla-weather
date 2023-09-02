@@ -58,12 +58,6 @@ li:first-letter {
   font-size: 14px;
 }
 
-.weather-temperature .active {
-  color: #202124;
-  text-decoration: none;
-  cursor: default;
-}
-
 .weather-forecast {
   text-align: center;
   font-size: 14px;
