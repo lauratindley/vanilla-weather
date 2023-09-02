@@ -21,6 +21,33 @@ function formatTime(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+            <div class="col-2">
+                <div class="weather-forecast-day">${day}</div>
+                <img
+                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-night.png"
+                  width="60"
+                />
+                <div class="forecast-temperatures">
+                  <span class="forecast-max-temperature">18° </span>
+                  <span class="forecast-min-temperature">12°</span>
+                </div>
+            </div>
+    `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 function displayWeather(response) {
   document.querySelector("h1").innerHTML = response.data.city;
 
@@ -87,3 +114,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
 
 search("London");
+displayForecast();
